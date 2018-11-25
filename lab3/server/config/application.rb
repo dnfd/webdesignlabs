@@ -9,6 +9,12 @@ Bundler.require(*Rails.groups)
 module Server
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.middleware.use Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: :any
+      end
+    end
     config.load_defaults 5.1
 
     config.eager_load_paths += Dir[Rails.root.join('app')]
