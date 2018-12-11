@@ -28,7 +28,7 @@ function load_themes(callback) {
   Get("/themes", callback)
 }
 
-function load_mesages(theme, callback) {
+function load_messages(theme, callback) {
   Get("/messages?theme=" + theme, callback)
 }
 
@@ -47,4 +47,23 @@ function delete_message(id, callback) {
 function delete_theme(id, callback) {
   Delete("/theme?id=" + id, callback)
 }
+
+function render_app(app) {
+  console.log(app)
+}
+
+var calendar = module.createCalendar('calendar')
+calendar.addListener(c => {
+  console.log(c.formDate())
+})
+var app = {}
+
+load_themes(data => {
+  app.themes = data
+  app.current_theme = data[0]
+  load_messages(app.current_theme.theme, data => {
+    app.messages = data
+    render_app(app)
+  })
+})
 

@@ -1,9 +1,32 @@
 <html>
   <head>
     <title>Lab3</title>
+    <link rel = "stylesheet" href = "calendar.css" />
+    <link rel = "stylesheet" href = "style.css" />
   </head>
   <body>
-
-    <script src="script.js"></script>
+    <div id = "app">
+      <div class = "column column-themes">
+        <div id = "themes">
+          Themes
+        </div>
+        <div>
+          Add theme
+        </div>
+      </div>
+      <div class = "column column-messages">
+        <div id = "messages">
+          Messages
+        </div>
+        <div>
+          Add Message
+        </div>
+      </div>
+      <div class = "column column-calendar">
+        <div class = "calendar" id = "calendar"></div>
+      </div>
+    </div>
+    <script src = "calendar.js"></script>
+    <script src = "script.js"></script>
   </body>
 </html>
