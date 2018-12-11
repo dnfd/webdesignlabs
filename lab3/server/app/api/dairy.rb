@@ -18,12 +18,13 @@ class Dairy < Grape::API
   desc 'Create new Message'
   params do
     requires :theme, type: String
+    requires :date, type: String
     requires :message
   end
   post "/message" do
     declared_params = declared(params, include_missing: false)
     t = Theme.find_by(theme: declared_params[:theme])
-    { response: "Message created" } if Message.create(theme: t, message: declared_params[:message]).id
+    { response: "Message created" } if Message.create(theme: t, date: declared_params[:date], message: declared_params[:message]).id
     error!("Smt went wrong", 503)
   end
 

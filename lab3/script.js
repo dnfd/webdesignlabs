@@ -36,8 +36,8 @@ function add_theme(theme, callback) {
   Post("/theme?theme=" + theme, callback)
 }
 
-function add_message(message, theme, callback) {
-  Post("/message?theme=" + theme + "&message=" + message, callback)
+function add_message(message, theme, date, callback) {
+  Post("/message?theme=" + theme + "&message=" + message + "&date=" + date, callback)
 }
 
 function delete_message(id, callback) {

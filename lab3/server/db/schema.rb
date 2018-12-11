@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20181125033824) do
   create_table "messages", force: :cascade do |t|
     t.bigint "theme_id", null: false
     t.text "message", null: false
+    t.string "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
