@@ -1,69 +1,50 @@
 var host = "http://localhost:3000/api"
 
-function load_themes(callback) {
-  $.ajax({
-    type: "GET",
-    url: host + "/themes",
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
+function Send(request, method, callback) {
+  callback = callback || console.log
+  fetch(host + request, {
+    method: method,
+    dataType: "json"
   })
+  .then(response => response.json())
+  .then(data => {
+    callback(data)
+  })
+}
+
+function Get(request, callback) {
+  Send(request, "GET", callback)
+}
+
+function Post(request, callback) {
+  Send(request, "POST", callback)
+}
+
+function Delete(request, callback) {
+  Send(request, "DELETE", callback)
+}
+
+function load_themes(callback) {
+  Get("/themes", callback)
 }
 
 function load_mesages(theme, callback) {
-  $.ajax({
-    type: "GET",
-    url: host + "/messages?theme=" + theme,
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
-  })
+  Get("/messages?theme=" + theme, callback)
 }
 
 function add_theme(theme, callback) {
-  $.ajax({
-    type: "POST",
-    url: host + "/theme?theme=" + theme,
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
-  })
+  Post("/theme?theme=" + theme, callback)
 }
 
 function add_message(message, theme, callback) {
-  $.ajax({
-    type: "POST",
-    url: host + "/message?theme=" + theme + "&message=" + message,
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
-  })
+  Post("/message?theme=" + theme + "&message=" + message, callback)
 }
 
 function delete_message(id, callback) {
-  $.ajax({
-    type: "DELETE",
-    url: host + "/message?id=" + id,
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
-  })
+  Delete("/message?id=" + id, callback)
 }
 
 function delete_theme(id, callback) {
-  $.ajax({
-    type: "DELETE",
-    url: host + "/theme?id=" + id,
-    dataType: "json",
-  }).done(json => {
-    callback = callback || console.log
-    callback(json)
-  })
+  Delete("/theme?id=" + id, callback)
 }
 
-load_themes(console.log)
