@@ -1,14 +1,92 @@
 #app {
   background-color: white;
+  border-radius: 10px;
+  padding: 20px 10px;
+  width: 1100px;
+  margin: auto;
+  border: thin solid rgb(16, 20, 78);
 }
 
-#app::after {
+.clearfix::after {
   content: "";
   display: table;
   clear: both;
 }
 
 .column {
+  padding: 10px;
+  padding-top: 20px;
   float: left;
+}
+
+.column-themes {
+  width: 200;
+}
+
+.column-messages {
+  width: 350px;
+  border-left: thin solid rgb(16, 20, 78);
+  margin-left: 5px;
+}
+
+.theme {
+  font-size: 22px;
+  border-bottom: thin solid rgb(16, 20, 78);
+  padding: 10px;
+}
+
+.theme.current {
+  background-color: rgb(16, 20, 78);
+  color: white;
+}
+
+.message {
+  font-size: 18px;
+  padding: 10px;
+  border-bottom: thin dotted rgb(16, 20, 78);
+}
+
+.delete-button {
+  border: medium dotted grey;
+  border-radius: 5px;
+  float: right;
+  background-color: lightgrey;
+}
+
+.delete-button:hover {
+  color: red;
+  border-color: red;
+  background-color: pink;
+}
+
+#send-theme, #send-message, textarea, input {
+  width: 100%;
+}
+
+input {
+  font-size: 20px;
+  padding: 2px;
+  margin-top: 20px;
+  border: none;
+  border-bottom: thin dotted rgb(16, 20, 78);
+}
+
+textarea {
+  margin-top: 20px;
+  height: 50px;
+}
+
+#send-theme, #send-message {
+  border: none;
+  color: rgb(16, 20, 78);
+  font-size: 20px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+#send-theme:hover, #send-message:hover {
+  border: none;
+  color: white;
+  background-color: rgb(16, 20, 78);
 }
 

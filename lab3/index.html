@@ -5,13 +5,14 @@
     <link rel = "stylesheet" href = "style.css" />
   </head>
   <body>
-    <div id = "app">
+    <div id = "app" class = "clearfix">
       <div class = "column column-themes">
         <div id = "themes">
           Themes
         </div>
         <div>
-          Add theme
+          <input id = "theme-text" type = "text"></input><br />
+          <button id = "send-theme">Add Theme</button>
         </div>
       </div>
       <div class = "column column-messages">
@@ -19,7 +20,8 @@
           Messages
         </div>
         <div>
-          Add Message
+          <textarea id = "message-text"></textarea><br / >
+          <button id = "send-message">Add message</button>
         </div>
       </div>
       <div class = "column column-calendar">

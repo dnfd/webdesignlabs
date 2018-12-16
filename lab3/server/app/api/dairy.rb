@@ -11,8 +11,11 @@ class Dairy < Grape::API
   end
   post "/theme" do
     declared_params = declared(params, include_missing: false)
-    { response: "Theme created" } if Theme.create(theme: declared_params[:theme]).id
-    error!("Smt went wrong", 503)
+    if Theme.create(theme: declared_params[:theme]).id
+      { response: "Theme created" }
+    else
+      error!("Smt went wrong", 503)
+    end
   end
 
   desc 'Create new Message'
@@ -24,8 +27,11 @@ class Dairy < Grape::API
   post "/message" do
     declared_params = declared(params, include_missing: false)
     t = Theme.find_by(theme: declared_params[:theme])
-    { response: "Message created" } if Message.create(theme: t, date: declared_params[:date], message: declared_params[:message]).id
-    error!("Smt went wrong", 503)
+    if Message.create(theme: t, date: declared_params[:date], message: declared_params[:message]).id
+      { response: "Message created" }
+    else
+      error!("Smt went wrong", 503)
+    end
   end
 
   desc 'Get Messages by Theme'
